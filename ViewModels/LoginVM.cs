@@ -2,7 +2,8 @@
 
 namespace Simple_App_WPF_MVVM.ViewModels
 {
-    internal class LoginVM
+
+    internal class LoginVM : ViewModelBase
     {
         private User user;
         private string userName;
@@ -16,15 +17,21 @@ namespace Simple_App_WPF_MVVM.ViewModels
         public string UserName
         {
             get { return user.UserName; }
-            set { user.UserName = value; }
+            set {
+                user.UserName = value; 
+                OnPropertyChanged(nameof(UserName));
+                }
         }
 
         public string Password
         {
             get { return user.Password; }
-            set { user.Password = value; }
+            set { 
+                user.Password = value;
+                OnPropertyChanged(nameof(Password));
+                }
         }
 
-
+      
     }
 }

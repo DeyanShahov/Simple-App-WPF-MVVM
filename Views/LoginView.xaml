@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Simple_App_WPF_MVVM.Views"
+             xmlns:vm="clr-namespace:Simple_App_WPF_MVVM.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:LoginVM />
+    </UserControl.DataContext>
     <StackPanel Orientation="Vertical"
                 Margin="50">
         <TextBlock Text="Login"
@@ -30,12 +34,12 @@
                      Padding="0, 5"
                      Width="255"
                      HorizontalAlignment="Left"
-                     Text="UserName"/>
+                     Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Password"
                        Grid.Row="2"
                        Margin="0, 15"
                        HorizontalAlignment="Left"/>
-            <TextBox Text="Password"
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
                      Grid.Row="3"
                      Padding="0, 5"
                      Width="255"
