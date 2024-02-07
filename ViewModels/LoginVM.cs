@@ -1,4 +1,7 @@
-﻿using Simple_App_WPF_MVVM.Models;
+﻿using Simple_App_WPF_MVVM.Commands;
+using Simple_App_WPF_MVVM.Models;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Simple_App_WPF_MVVM.ViewModels
 {
@@ -7,12 +10,13 @@ namespace Simple_App_WPF_MVVM.ViewModels
     {
         private User user;
         private string userName;
+        public ICommand LoginCommand { get;}
 
         public LoginVM()
         {
             user = new User();
+            LoginCommand = new RelayCommand((param) => LoggedIn(param));
         }
-
 
         public string UserName
         {
@@ -32,6 +36,10 @@ namespace Simple_App_WPF_MVVM.ViewModels
                 }
         }
 
-      
+        private void LoggedIn(object param)
+        {
+            MessageBox.Show($"Logged in SuccessFull as {param}");
+        }
+
     }
 }

@@ -51,7 +51,9 @@
                 Background="Black"
                 Margin="0, 25"
                 Height="35"
-                Width="250"/>
+                Width="250"
+                Command="{Binding LoginCommand}"
+                CommandParameter="{Binding UserName}"/>
 
     </StackPanel>
 </UserControl>
