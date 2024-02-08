@@ -13,28 +13,52 @@
     </UserControl.DataContext>
     <StackPanel Orientation="Vertical"
                 Margin="50">
-        <TextBlock Text="Login"
-                   FontSize="25"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   FontWeight="Bold"
-                   Padding="10"/>
-        <Grid VerticalAlignment="Center"
-              HorizontalAlignment="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="User Name"
+            <TextBlock Text="Login"
+                       Grid.Column="0"
                        Grid.Row="0"
+                       FontSize="25"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       Padding="10"/>
+            <TextBlock Text="Register"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       FontSize="25"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       Padding="10"/>
+            <TextBlock Text="User Name"
+                       Grid.Column="0"
+                       Grid.Row="1"
                        Margin="0, 15"
-                       HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="1"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="User Name"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Margin="0, 15"
+                      HorizontalAlignment="Center"/>
+            <TextBox Grid.Row="2"
+                     Grid.Column="0"
                      Padding="0, 5"
                      Width="255"
-                     HorizontalAlignment="Left">
+                     HorizontalAlignment="Center">
                 <!--Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>-->
                 <TextBox.Text>
                     <Binding Path="UserName"
@@ -49,21 +73,52 @@
                         <Style.Triggers>
                             <Trigger Property="Validation.HasError" Value="True">
                                 <Setter Property="ToolTip"
-                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, 
-                                    Path=(Validation.Errors)/ErrorContent}"/>
+                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox Grid.Row="2"
+                    Grid.Column="1"
+                    Padding="0, 5"
+                    Width="255"
+                    HorizontalAlignment="Center">
+                <!--Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>-->
+                <TextBox.Text>
+                    <Binding Path="UserName"
+                 UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:UserNameValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </TextBox.Style>
             </TextBox>
             <TextBlock Text="Password"
-                       Grid.Row="2"
+                       Grid.Row="3"
+                       Grid.Column="0"
                        Margin="0, 15"
-                       HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="3"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Password"
+                        Grid.Row="3"
+                       Grid.Column="1"
+                        Margin="0, 15"
+                        HorizontalAlignment="Center"/>
+            <TextBox Grid.Row="4"
+                     Grid.Column="0"
                      Padding="0, 5"
                      Width="255"
-                     HorizontalAlignment="Left">
+                     HorizontalAlignment="Center">
                 <TextBox.Text>
                     <Binding Path="Password"
                              UpdateSourceTrigger="PropertyChanged">
@@ -77,23 +132,89 @@
                         <Style.Triggers>
                             <Trigger Property="Validation.HasError" Value="True">
                                 <Setter Property="ToolTip"
-                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                                    Path=(Validation.Errors)/ErrorContent}"/>
+                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </TextBox.Style>
             </TextBox>
+            <TextBox Grid.Row="4"
+                    Grid.Column="1"
+                    Padding="0, 5"
+                    Width="255"
+                    HorizontalAlignment="Center">
+                <TextBox.Text>
+                    <Binding Path="Password"
+                            UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:PasswordValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBlock Text="Confirm Password"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="0, 15"
+                        HorizontalAlignment="Center"/>
+            <TextBox Grid.Row="6"
+                    Grid.Column="1"
+                    Padding="0, 5"
+                    Width="255"
+                    HorizontalAlignment="Center">
+                <TextBox.Text>
+                    <Binding Path="ConfirmPassword"
+                            UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:PasswordValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip"
+                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button x:Name="LoginBtn"
+                    Content="Login"
+                    Foreground="White"
+                    Background="Black"
+                    Margin="0, 25"
+                    Height="35"
+                    Width="200"
+                    Grid.Column="0"
+                    Grid.Row="7"
+                    HorizontalAlignment="Center"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding UserName}"/>
+            <Button x:Name="RegisterBtn"
+                    Content="Register"
+                    Foreground="White"
+                    Background="Black"
+                    Margin="0, 25"
+                    Height="35"
+                    Width="200"
+                    Grid.Column="1"
+                    Grid.Row="7"
+                    HorizontalAlignment="Center"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding UserName}"/>
         </Grid>
-        <Button x:Name="LoginBtn"
-                Content="Login"
-                Foreground="White"
-                Background="Black"
-                Margin="0, 25"
-                Height="35"
-                Width="250"
-                Command="{Binding LoginCommand}"
-                CommandParameter="{Binding UserName}"/>
-
     </StackPanel>
 </UserControl>
